@@ -1,14 +1,10 @@
-paper = Raphael(0, 0, 500, 500)
-
 class Rect
   constructor: (x, y) ->
     @impl = paper.rect(0, 0, 20, 20).attr(fill: 'pink', stroke: '#ff8888')
     @move(x, y)
 
   move: (x, y) ->
-    @x = x
-    @y = y
-    @impl.attr(x: @x * 20, y: @y * 20)
+    @impl.attr(x: x * 20, y: y * 20)
 
   die: ->
     @impl.attr(fill: '#888888', stroke: '#444444')
@@ -131,6 +127,7 @@ class Map
             rect.move(x, cy + 1)
 
 positionX = 0; positionY = 0
+paper = Raphael(0, 0, 500, 500)
 map = new Map
 block = new Block
 intervalId = setInterval ->
@@ -146,7 +143,7 @@ intervalId = setInterval ->
     unless map.check(block.block, positionX, positionY)
       clearInterval(intervalId)
   true
-, 1000
+, 800
 
 @key = (keyCode) ->
   switch keyCode

@@ -1,7 +1,5 @@
 var Block, Map, Rect, block, intervalId, map, paper, positionX, positionY;
 
-paper = Raphael(0, 0, 500, 500);
-
 Rect = (function() {
 
   function Rect(x, y) {
@@ -13,11 +11,9 @@ Rect = (function() {
   }
 
   Rect.prototype.move = function(x, y) {
-    this.x = x;
-    this.y = y;
     return this.impl.attr({
-      x: this.x * 20,
-      y: this.y * 20
+      x: x * 20,
+      y: y * 20
     });
   };
 
@@ -235,6 +231,8 @@ positionX = 0;
 
 positionY = 0;
 
+paper = Raphael(0, 0, 500, 500);
+
 map = new Map;
 
 block = new Block;
@@ -255,7 +253,7 @@ intervalId = setInterval(function() {
     }
   }
   return true;
-}, 1000);
+}, 800);
 
 this.key = function(keyCode) {
   switch (keyCode) {
